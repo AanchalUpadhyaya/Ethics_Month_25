@@ -19,6 +19,59 @@
       overflow-x: hidden;
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Firefly Animation Styles */
+    .firefly {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 50%;
+      filter: blur(0.5px);
+      box-shadow: 
+        0 0 5px 1px #fff,
+        0 0 10px 2px #ffcc00,
+        0 0 15px 3px rgba(255, 204, 0, 0.5);
+      z-index: 1;
+      opacity: 0;
+      animation: 
+        fly linear infinite,
+        glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) translateX(50px) rotate(5deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 
+          0 0 5px 1px #fff,
+          0 0 10px 2px #ffcc00,
+          0 0 15px 3px rgba(255, 204, 0, 0.5);
+      }
+      50% {
+        box-shadow: 
+          0 0 8px 2px #fff,
+          0 0 16px 4px #ffcc00,
+          0 0 24px 6px rgba(255, 204, 0, 0.5);
+      }
     }
 
     /* Centered Top Header */
@@ -48,24 +101,6 @@
       animation: glow 2s ease-in-out infinite alternate;
       letter-spacing: 1px;
       text-align: center;
-    }
-
-    /* Tata Steel Logo */
-    .corner-logo {
-      position: fixed;
-      top: 20px;
-      height: 50px;
-      width: auto;
-      z-index: 110;
-      display: none;
-    }
-
-    .logo-left {
-      left: 20px;
-    }
-
-    .logo-right {
-      right: 20px;
     }
 
     /* Welcome Container - Initial View */
@@ -232,6 +267,7 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.1);
       overflow: hidden;
       font-family: 'Poppins', sans-serif;
+      z-index: 2;
     }
 
     .menu button::after {
@@ -282,6 +318,7 @@
       color: #333;
       max-height: 90vh;
       overflow-y: auto;
+      z-index: 2001;
     }
 
     .modal-content video {
@@ -296,134 +333,6 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: #333;
-    }
-
-    /* Quiz Styles */
-    .quiz-container {
-      display: block;
-    }
-
-    .quiz-question {
-      margin-bottom: 20px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .quiz-options {
-      margin-bottom: 25px;
-    }
-
-    .quiz-option {
-      display: block;
-      margin: 10px 0;
-      padding: 10px 15px;
-      background: #f5f5f5;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .quiz-option:hover {
-      background: #e0e0e0;
-    }
-
-    .quiz-option.selected {
-      background: #0072ce;
-      color: white;
-    }
-
-    .quiz-nav {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-
-    .quiz-btn {
-      padding: 8px 20px;
-      background: #0072ce;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .quiz-btn:disabled {
-      background: #cccccc;
-      cursor: not-allowed;
-    }
-
-    .quiz-result {
-      text-align: center;
-      display: block;
-    }
-
-    .quiz-result h3 {
-      margin-bottom: 15px;
-      color: #0072ce;
-    }
-
-    .quiz-result p {
-      margin-bottom: 10px;
-    }
-
-    .leaderboard {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
-
-    .leaderboard th, .leaderboard td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .leaderboard th {
-      background-color: #0072ce;
-      color: white;
-    }
-
-    .leaderboard tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    .leaderboard tr:hover {
-      background-color: #e6e6e6;
-    }
-
-    .current-user {
-      background-color: #ffeb3b !important;
-      color: #000 !important;
-      font-weight: bold;
-    }
-
-    .user-id-input {
-      margin-bottom: 20px;
-    }
-
-    .user-id-input input {
-      padding: 10px;
-      width: 100%;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    .user-id-input button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #0072ce;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .error-message {
-      color: red;
-      font-size: 0.9rem;
-      margin-top: 5px;
-      display: none;
     }
 
     /* Language Selection */
@@ -466,47 +375,6 @@
       text-shadow: 0 0 5px #ffe600;
     }
 
-    /* Particles Effects */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 50%;
-      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
-      animation: float linear infinite;
-    }
-
-    .top-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 20vh;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .top-particle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 50%;
-      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.4);
-      animation: floatDown linear infinite;
-    }
-
     /* Animations */
     @keyframes fadeInUp {
       to {
@@ -519,40 +387,6 @@
       to {
         opacity: 1;
         transform: scale(1);
-      }
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(20px);
-        opacity: 0;
-      }
-    }
-
-    @keyframes floatDown {
-      0% {
-        transform: translateY(-20px) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(20vh) translateX(10px);
-        opacity: 0;
       }
     }
 
@@ -616,10 +450,6 @@
         font-size: 0.85rem;
         padding: 8px 16px;
       }
-
-      .corner-logo {
-        height: 40px;
-      }
     }
 
     @media (max-width: 480px) {
@@ -634,10 +464,6 @@
       .menu-section {
         padding-top: 100px;
       }
-
-      .corner-logo {
-        height: 30px;
-      }
     }
   </style>
 </head>
@@ -645,9 +471,6 @@
   <div class="top-header">
     <div class="logo">ETHICS MONTH '25</div>
   </div>
-
-  <div class="top-particles" id="topParticles"></div>
-  <div class="particles" id="particles"></div>
   
   <!-- Initial Welcome View -->
   <div class="welcome-container" id="welcomeContainer">
@@ -659,7 +482,7 @@
   <!-- Menu Section - Vertical Centered Buttons -->
   <div class="menu-section" id="menuSection">
     <div class="menu">
-      <button onclick="openModal(`<video controls src='vide.mp4'></video>`)">Message from Leadership</button>
+      <button onclick="openModal(`<video controls src='video.mp4'></video>`)">Message from Leadership</button>
       <button onclick="startEthicalDilemma()">Ethical Dilemma</button>
     </div>
   </div>
@@ -677,295 +500,60 @@
   </div>
 
   <script>
-    // Quiz questions in English and Hindi
-    const quizQuestions = {
-      english: [
-        {
-          question: "1. You discover a colleague is taking office supplies home for personal use. What should you do?",
-          options: [
-            "Ignore it as it's just small items",
-            "Report it to your supervisor or ethics hotline",
-            "Confront the colleague directly",
-            "Start taking supplies home yourself"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "2. A vendor offers you tickets to a sporting event in exchange for favorable treatment. How do you respond?",
-          options: [
-            "Accept the tickets as a gesture of goodwill",
-            "Decline politely and report the offer to your ethics officer",
-            "Accept but promise nothing in return",
-            "Ask for cash instead"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "3. You accidentally receive confidential information not intended for you. What's the ethical action?",
-          options: [
-            "Read it and then delete it",
-            "Share it with your team for discussion",
-            "Notify the sender and delete/destroy the information",
-            "Use it to your advantage"
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: "4. Your manager asks you to falsify a report to meet targets. What do you do?",
-          options: [
-            "Comply to avoid conflict",
-            "Refuse and report the request to HR or ethics hotline",
-            "Do it but keep evidence to protect yourself",
-            "Ask for a raise in exchange"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "5. You witness harassment in the workplace. What's the right course of action?",
-          options: [
-            "Ignore it as it's not your business",
-            "Report to LPR/Dept ethics coordinator",
-            "Join in to fit in with the group",
-            "Record it and post on social media"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "6. Who is the LPR of your department?",
-          options: [
-            "Aanchal Upadhyaya",
-            "Daya Shankar Choudhary",
-            "Sanjeev Tiwari",
-            "Abhishikta Pal"
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: "7. Choose Ethics coordinator of I blast furnace?",
-          options: [
-            "Aanchal Upadhyaya",
-            "Daya Shankar Choudhary",
-            "Sanjeev Tiwari",
-            "D Bhanu Jee"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "8. Which one of the following does not come under ethical practice?",
-          options: [
-            "Accepting diary as gift",
-            "Receiving sweets worth Rs.3000 or less",
-            "Accepting Rs.500 as gift",
-            "Accepting calendar as gift"
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: "9. Ethics month is celebrated to honor the birth anniversary of?",
-          options: [
-            "Shri J N Tata",
-            "Shri JRD Tata",
-            "Shri Ratan Tata",
-            "Shri Dorabji Tata"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "10. If your colleague/senior shouts at you for not completing target on time?",
-          options: [
-            "Argue with him",
-            "Complain to his/her senior",
-            "Log harassment case for unpleasant behaviour",
-            "Politely discuss the issue"
-          ],
-          correctAnswer: 3
-        }
-      ],
-      hindi: [
-        {
-          question: "1. आप पाते हैं कि एक सहकर्मी व्यक्तिगत उपयोग के लिए कार्यालय की सामग्री घर ले जा रहा है। आपको क्या करना चाहिए?",
-          options: [
-            "इसे नजरअंदाज करें क्योंकि यह सिर्फ छोटी वस्तुएं हैं",
-            "इसकी रिपोर्ट अपने पर्यवेक्षक या नैतिकता हॉटलाइन को करें",
-            "सीधे सहकर्मी का सामना करें",
-            "खुद भी सामान घर ले जाना शुरू कर दें"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "2. एक विक्रेता आपको अनुकूल व्यवहार के बदले में एक खेल आयोजन के टिकट देने की पेशकश करता है। आप कैसे प्रतिक्रिया देंगे?",
-          options: [
-            "सद्भावना के इशारे के रूप में टिकट स्वीकार करें",
-            "विनम्रतापूर्वक मना करें और इस पेशकश की रिपोर्ट अपने नैतिकता अधिकारी को करें",
-            "स्वीकार करें लेकिन बदले में कुछ भी वादा न करें",
-            "इसके बजाय नकद मांगें"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "3. आप गलती से गोपनीय जानकारी प्राप्त करते हैं जो आपके लिए नहीं थी। नैतिक कार्रवाई क्या है?",
-          options: [
-            "इसे पढ़ें और फिर हटा दें",
-            "चर्चा के लिए इसे अपनी टीम के साथ साझा करें",
-            "प्रेषक को सूचित करें और जानकारी को हटा दें/नष्ट कर दें",
-            "इसे अपने फायदे के लिए उपयोग करें"
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: "4. आपका प्रबंधक आपसे लक्ष्यों को पूरा करने के लिए एक रिपोर्ट को गलत तरीके से बदलने के लिए कहता है। आप क्या करते हैं?",
-          options: [
-            "संघर्ष से बचने के लिए अनुपालन करें",
-            "मना कर दें और अनुरोध की रिपोर्ट एचआर या नैतिकता हॉटलाइन को करें",
-            "इसे करें लेकिन खुद को सुरक्षित रखने के लिए सबूत रखें",
-            "बदले में वेतन वृद्धि मांगें"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "5. आप कार्यस्थल पर उत्पीड़न देखते हैं। सही कार्रवाई क्या है?",
-          options: [
-            "इसे नजरअंदाज करें क्योंकि यह आपका मामला नहीं है",
-            "इसकी रिपोर्ट एचआर या अपने पर्यवेक्षक को करें",
-            "समूह में फिट होने के लिए इसमें शामिल हो जाएं",
-            "इसे रिकॉर्ड करें और सोशल मीडिया पर पोस्ट करें"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "6. आपके विभाग का LPR कौन है?",
-          options: [
-            "आँचल उपाध्याय",
-            "दया शंकर चौधरी",
-            "संजीव तिवारी",
-            "अभिषिक्ता पाल"
-          ],
-          correctAnswer: 0
-        },
-        {
-          question: "7. I ब्लास्ट फर्नेस के नैतिकता समन्वयक का चयन करें?",
-          options: [
-            "आँचल उपाध्याय",
-            "दया शंकर चौधरी",
-            "संजीव तिवारी",
-            "डी भानु जी"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "8. निम्नलिखित में से कौन सा नैतिक अभ्यास के अंतर्गत नहीं आता है?",
-          options: [
-            "डायरी को उपहार के रूप में स्वीकार करना",
-            "3000 रुपये या उससे कम मूल्य की मिठाई प्राप्त करना",
-            "500 रुपये को उपहार के रूप में स्वीकार करना",
-            "कैलेंडर को उपहार के रूप में स्वीकार करना"
-          ],
-          correctAnswer: 2
-        },
-        {
-          question: "9. नैतिकता माह किसकी जयंती के सम्मान में मनाया जाता है?",
-          options: [
-            "श्री जे एन टाटा",
-            "श्री जेआरडी टाटा",
-            "श्री रतन टाटा",
-            "श्री दोराबजी टाटा"
-          ],
-          correctAnswer: 1
-        },
-        {
-          question: "10. यदि आपका सहकर्मी/वरिष्ठ समय पर लक्ष्य पूरा न करने के लिए आप पर चिल्लाता है?",
-          options: [
-            "उसके साथ बहस करें",
-            "उसके वरिष्ठ को शिकायत करें",
-            "अप्रिय व्यवहार के लिए उत्पीड़न मामला दर्ज करें",
-            "विनम्रता से मुद्दे पर चर्चा करें"
-          ],
-          correctAnswer: 3
-        }
-      ]
+    // Google Form URLs for different languages
+    const googleForms = {
+      english: "https://docs.google.com/forms/d/e/1FAIpQLSeeU-9XMfVUAIRazwcE1Z7mE7WARvXh0F0pP154ApAzg-CUBg/viewform?usp=header",
+      hindi: "https://forms.gle/FAVgb5Hob9pRrMz68"
     };
 
-    // Quiz state variables
-    let currentQuestion = 0;
-    let userAnswers = [];
-    let userId = null;
-    let quizStarted = false;
-    let selectedLanguage = 'english';
-
-    // Create top particles
-    function createTopParticles() {
-      const topParticlesContainer = document.getElementById('topParticles');
-      const particleCount = window.innerWidth < 768 ? 20 : 30;
+    // Create fireflies
+    function createFireflies() {
+      const numFireflies = 50; // Increased quantity
+      const container = document.body;
       
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('top-particle');
-        
-        // Random position at top of screen
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.top = `-10px`;
-        
-        // Random size
-        const size = Math.random() * 3 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        // Random animation duration and delay
-        const duration = Math.random() * 8 + 4;
-        const delay = Math.random() * 3;
-        particle.style.animationDuration = `${duration}s`;
-        particle.style.animationDelay = `${delay}s`;
-        
-        // Random color variation
-        const hue = Math.random() * 60 + 30; // Yellow to orange range
-        particle.style.backgroundColor = `hsla(${hue}, 100%, 80%, 0.7)`;
-        
-        topParticlesContainer.appendChild(particle);
-      }
-    }
-
-    // Create bottom particles (light bees)
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = window.innerWidth < 768 ? 30 : 50;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
+      for (let i = 0; i < numFireflies; i++) {
+        const firefly = document.createElement('div');
+        firefly.className = 'firefly';
         
         // Random position at bottom of screen
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.bottom = `-10px`;
+        const startX = Math.random() * window.innerWidth;
+        const startY = window.innerHeight + Math.random() * 100;
         
-        // Random size
-        const size = Math.random() * 5 + 3;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
+        // Random animation duration
+        const duration = 8 + Math.random() * 15; // Faster movement
+        const delay = Math.random() * 15;
         
-        // Random animation duration and delay
-        const duration = Math.random() * 10 + 5;
-        const delay = Math.random() * 5;
-        particle.style.animationDuration = `${duration}s`;
-        particle.style.animationDelay = `${delay}s`;
+        // Random size variation
+        const size = 2 + Math.random() * 3; // Smaller size (2-5px)
         
-        // Random color variation
-        const hue = Math.random() * 60 + 30; // Yellow to orange range
-        particle.style.backgroundColor = `hsla(${hue}, 100%, 70%, 0.8)`;
+        firefly.style.left = `${startX}px`;
+        firefly.style.top = `${startY}px`;
+        firefly.style.width = `${size}px`;
+        firefly.style.height = `${size}px`;
+        firefly.style.animationDuration = `${duration}s`;
+        firefly.style.animationDelay = `${delay}s`;
         
-        particlesContainer.appendChild(particle);
+        // Random glow intensity
+        const intensity = 0.7 + Math.random() * 0.3;
+        firefly.style.opacity = intensity;
+        
+        container.appendChild(firefly);
       }
     }
-    
-    // Initialize particles when DOM is loaded
+
+    // Initialize the app when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
-      createTopParticles();
-      createParticles();
+      // Create fireflies
+      createFireflies();
       
       // Continue button functionality
       document.getElementById('continueBtn').addEventListener('click', () => {
         // Hide welcome container and show menu section
         document.getElementById('welcomeContainer').style.display = 'none';
         document.getElementById('menuSection').style.display = 'block';
+        
+        // Create more fireflies for the menu section
+        createFireflies();
         
         // Create ripple effect
         const ripple = document.createElement('div');
@@ -1009,313 +597,49 @@
       }
     }
 
-    // Recreate particles on window resize
-    window.addEventListener('resize', () => {
-      const topParticlesContainer = document.getElementById('topParticles');
-      const particlesContainer = document.getElementById('particles');
-      topParticlesContainer.innerHTML = '';
-      particlesContainer.innerHTML = '';
-      createTopParticles();
-      createParticles();
-    });
-
-    // Ethical Dilemma Quiz Functions
+    // Ethical Dilemma - Show language selection
     function startEthicalDilemma() {
-      // Reset quiz state
-      currentQuestion = 0;
-      userAnswers = [];
-      quizStarted = false;
-      
-      // Show user ID input form
       const modalBody = document.getElementById("modalBody");
       modalBody.innerHTML = `
-        <div class="user-id-input">
-          <h3>Ethical Dilemma Quiz</h3>
-          <p>Please enter your 6-digit employee ID to begin:</p>
-          <input type="text" id="userIdInput" placeholder="Enter your 6-digit ID" 
-                 pattern="[0-9]{6}" inputmode="numeric" maxlength="6">
-          <div class="error-message" id="errorMessage">Please enter a valid 6-digit ID</div>
-          <button onclick="validateUserId()">Continue</button>
-        </div>
-      `;
-      
-      openModal(modalBody.innerHTML);
-      
-      // Add input validation
-      const userIdInput = document.getElementById("userIdInput");
-      userIdInput.addEventListener('input', function() {
-        // Only allow numbers and limit to 6 digits
-        this.value = this.value.replace(/[^0-9]/g, '');
-        if (this.value.length > 6) {
-          this.value = this.value.slice(0, 6);
-        }
-      });
-    }
-
-    function validateUserId() {
-      const userIdInput = document.getElementById("userIdInput");
-      const errorMessage = document.getElementById("errorMessage");
-      
-      // Check if input is exactly 6 digits
-      if (userIdInput.value.length !== 6 || !/^\d{6}$/.test(userIdInput.value)) {
-        errorMessage.style.display = 'block';
-        return;
-      }
-      
-      errorMessage.style.display = 'none';
-      userId = userIdInput.value;
-      
-      // Check if user already exists in leaderboard
-      const leaderboard = getLeaderboard();
-      const existingUser = leaderboard.find(entry => entry.userId === userId);
-      
-      if (existingUser) {
-        // User exists - show leaderboard directly
-        showLeaderboardOnly(userId);
-      } else {
-        // New user - show language selection
-        showLanguageSelection();
-      }
-    }
-
-    function showLanguageSelection() {
-      const modalBody = document.getElementById("modalBody");
-      modalBody.innerHTML = `
-        <div class="user-id-input">
-          <h3>Select Language / भाषा चुनें</h3>
+        <div style="text-align: center;">
+          <h3>Ethical Dilemma Survey</h3>
+          <p>Please select your preferred language:</p>
+          
           <div class="language-selection">
-            <div class="language-option">
+            <div class="language-option" onclick="selectLanguage('english')">
               <input type="radio" id="english" name="language" value="english" checked>
               <label for="english">English</label>
             </div>
-            <div class="language-option">
+            <div class="language-option" onclick="selectLanguage('hindi')">
               <input type="radio" id="hindi" name="language" value="hindi">
               <label for="hindi">हिंदी (Hindi)</label>
             </div>
           </div>
-          <button onclick="startQuizWithLanguage()">Continue / जारी रखें</button>
-        </div>
-      `;
-    }
-
-    function startQuizWithLanguage() {
-      selectedLanguage = document.querySelector('input[name="language"]:checked').value;
-      quizStarted = true;
-      showQuestion();
-    }
-
-    // New function to show leaderboard only
-    function showLeaderboardOnly(userId) {
-      const leaderboard = getLeaderboard();
-      const userEntry = leaderboard.find(entry => entry.userId === userId);
-      
-      // Generate leaderboard HTML
-      let leaderboardHtml = '<tr><th>Rank</th><th>User ID</th><th>Score</th></tr>';
-      leaderboard.forEach((entry, index) => {
-        // Highlight current user's entry
-        const isCurrentUser = entry.userId === userId;
-        const rowClass = isCurrentUser ? 'class="current-user"' : '';
-        
-        leaderboardHtml += `
-          <tr ${rowClass}>
-            <td>${index + 1}</td>
-            <td>${entry.userId}</td>
-            <td>${entry.score}/${quizQuestions.english.length}</td>
-          </tr>
-        `;
-      });
-      
-      // Show leaderboard with message
-      const modalBody = document.getElementById("modalBody");
-      modalBody.innerHTML = `
-        <div class="quiz-result">
-          <h3>Welcome Back!</h3>
-          <p>Your previous score is already recorded in the leaderboard.</p>
-          <p>You can only take the quiz once per ID.</p>
           
-          <h3 style="margin-top: 30px;">Leaderboard</h3>
-          <table class="leaderboard">
-            ${leaderboardHtml}
-          </table>
-        </div>
-      `;
-    }
-
-    function showQuestion() {
-      const questions = quizQuestions[selectedLanguage];
-      
-      if (currentQuestion >= questions.length) {
-        showResults();
-        return;
-      }
-      
-      const question = questions[currentQuestion];
-      let optionsHtml = '';
-      
-      question.options.forEach((option, index) => {
-        optionsHtml += `
-          <div class="quiz-option" onclick="selectOption(${index})">
-            ${option}
-          </div>
-        `;
-      });
-      
-      const modalBody = document.getElementById("modalBody");
-      modalBody.innerHTML = `
-        <div class="quiz-container">
-          <div class="quiz-question">${question.question}</div>
-          <div class="quiz-options">${optionsHtml}</div>
-          <div class="quiz-nav">
-            <button class="quiz-btn" onclick="prevQuestion()" ${currentQuestion === 0 ? 'disabled' : ''}>${selectedLanguage === 'hindi' ? 'पिछला' : 'Previous'}</button>
-            <button class="quiz-btn" onclick="nextQuestion()" ${userAnswers[currentQuestion] === undefined ? 'disabled' : ''}>${currentQuestion === questions.length - 1 ? (selectedLanguage === 'hindi' ? 'जमा करें' : 'Submit') : (selectedLanguage === 'hindi' ? 'अगला' : 'Next')}</button>
-          </div>
+          <button onclick="redirectToGoogleForm()" style="margin-top: 20px; padding: 10px 20px; background: #0072ce; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Continue
+          </button>
         </div>
       `;
       
-      // Highlight previously selected answer if exists
-      if (userAnswers[currentQuestion] !== undefined) {
-        const options = document.querySelectorAll('.quiz-option');
-        options[userAnswers[currentQuestion]].classList.add('selected');
-      }
+      openModal(modalBody.innerHTML);
     }
 
-    function selectOption(optionIndex) {
-      // Remove selected class from all options
-      const options = document.querySelectorAll('.quiz-option');
-      options.forEach(opt => opt.classList.remove('selected'));
-      
-      // Add selected class to clicked option
-      options[optionIndex].classList.add('selected');
-      
-      // Store user answer
-      userAnswers[currentQuestion] = optionIndex;
-      
-      // Enable next button
-      document.querySelector('.quiz-nav button:last-child').disabled = false;
+    let selectedLanguage = 'english';
+
+    function selectLanguage(language) {
+      selectedLanguage = language;
+      // Update the radio button selection
+      document.getElementById('english').checked = (language === 'english');
+      document.getElementById('hindi').checked = (language === 'hindi');
     }
 
-    function nextQuestion() {
-      const questions = quizQuestions[selectedLanguage];
+    function redirectToGoogleForm() {
+      // Close the modal
+      document.getElementById("modal").style.display = "none";
       
-      if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        showQuestion();
-      } else {
-        showResults();
-      }
-    }
-
-    function prevQuestion() {
-      if (currentQuestion > 0) {
-        currentQuestion--;
-        showQuestion();
-      }
-    }
-
-    function showResults() {
-      const questions = quizQuestions[selectedLanguage];
-      
-      // Calculate score
-      let correctAnswers = 0;
-      userAnswers.forEach((answer, index) => {
-        if (answer === questions[index].correctAnswer) {
-          correctAnswers++;
-        }
-      });
-      
-      // Save to leaderboard
-      saveToLeaderboard(userId, correctAnswers);
-      
-      // Get leaderboard
-      const leaderboard = getLeaderboard();
-      
-      // Generate leaderboard HTML with current user highlighted
-      let leaderboardHtml = '<tr><th>Rank</th><th>User ID</th><th>Score</th></tr>';
-      leaderboard.forEach((entry, index) => {
-        const isCurrentUser = entry.userId === userId;
-        const rowClass = isCurrentUser ? 'class="current-user"' : '';
-        
-        leaderboardHtml += `
-          <tr ${rowClass}>
-            <td>${index + 1}</td>
-            <td>${entry.userId}</td>
-            <td>${entry.score}/${questions.length}</td>
-          </tr>
-        `;
-      });
-      
-      // Show results
-      const modalBody = document.getElementById("modalBody");
-      modalBody.innerHTML = `
-        <div class="quiz-result">
-          <h3>${selectedLanguage === 'hindi' ? 'क्विज परिणाम' : 'Quiz Results'}</h3>
-          <p>${selectedLanguage === 'hindi' ? 'आपका स्कोर' : 'You scored'} ${correctAnswers} ${selectedLanguage === 'hindi' ? 'में से' : 'out of'} ${questions.length}</p>
-          <p>${getFeedbackMessage(correctAnswers, questions.length, selectedLanguage)}</p>
-          
-          <h3 style="margin-top: 30px;">Leaderboard</h3>
-          <table class="leaderboard">
-            ${leaderboardHtml}
-          </table>
-        </div>
-      `;
-    }
-
-    function getFeedbackMessage(score, total, language) {
-      const percentage = (score / total) * 100;
-      
-      if (language === 'hindi') {
-        if (percentage >= 80) {
-          return "उत्कृष्ट! आपके पास कॉर्पोरेट नैतिकता की मजबूत समझ है।";
-        } else if (percentage >= 60) {
-          return "अच्छा काम! आप अधिकांश नैतिक सिद्धांतों को समझते हैं लेकिन कुछ क्षेत्रों में सुधार कर सकते हैं।";
-        } else if (percentage >= 40) {
-          return "ठीक है। बेहतर समझ के लिए कंपनी के नैतिकता संहिता की समीक्षा करने पर विचार करें।";
-        } else {
-          return "सुधार की आवश्यकता है। कृपया कंपनी की नैतिकता नीतियों की समीक्षा करें और नैतिकता प्रशिक्षण पर विचार करें।";
-        }
-      } else {
-        if (percentage >= 80) {
-          return "Excellent! You have a strong understanding of corporate ethics.";
-        } else if (percentage >= 60) {
-          return "Good job! You understand most ethical principles but could improve in some areas.";
-        } else if (percentage >= 40) {
-          return "Fair. Consider reviewing the company's code of ethics for better understanding.";
-        } else {
-          return "Needs improvement. Please review the company's ethics policies and consider ethics training.";
-        }
-      }
-    }
-
-    function saveToLeaderboard(userId, score) {
-      let leaderboard = JSON.parse(localStorage.getItem('ethicsQuizLeaderboard')) || [];
-      
-      // Check if user already exists
-      const existingUserIndex = leaderboard.findIndex(entry => entry.userId === userId);
-      
-      if (existingUserIndex !== -1) {
-        // Update score if current score is higher
-        if (score > leaderboard[existingUserIndex].score) {
-          leaderboard[existingUserIndex].score = score;
-        }
-      } else {
-        // Add new entry
-        leaderboard.push({ userId, score });
-      }
-      
-      // Sort by score (descending)
-      leaderboard.sort((a, b) => b.score - a.score);
-      
-      // Keep only top 10
-      if (leaderboard.length > 10) {
-        leaderboard = leaderboard.slice(0, 10);
-      }
-      
-      // Save to localStorage
-      localStorage.setItem('ethicsQuizLeaderboard', JSON.stringify(leaderboard));
-    }
-
-    function getLeaderboard() {
-      return JSON.parse(localStorage.getItem('ethicsQuizLeaderboard')) || [];
+      // Redirect to the appropriate Google Form
+      window.open(googleForms[selectedLanguage], '_blank');
     }
   </script>
 </body>
