@@ -44,7 +44,7 @@
 
     @keyframes fly {
       0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
+        transform: translateY(-100px) translateX(0) rotate(0deg);
         opacity: 0;
       }
       10% {
@@ -54,7 +54,7 @@
         opacity: 1;
       }
       100% {
-        transform: translateY(-100px) translateX(50px) rotate(5deg);
+        transform: translateY(100vh) translateX(50px) rotate(5deg);
         opacity: 0;
       }
     }
@@ -508,23 +508,27 @@
 
     // Create fireflies
     function createFireflies() {
-      const numFireflies = 50; // Increased quantity
+      const numFireflies = 150; // Increased quantity significantly
       const container = document.body;
+      
+      // Clear existing fireflies
+      const existingFireflies = document.querySelectorAll('.firefly');
+      existingFireflies.forEach(fly => fly.remove());
       
       for (let i = 0; i < numFireflies; i++) {
         const firefly = document.createElement('div');
         firefly.className = 'firefly';
         
-        // Random position at bottom of screen
+        // Random position at top of screen
         const startX = Math.random() * window.innerWidth;
-        const startY = window.innerHeight + Math.random() * 100;
+        const startY = -50 - Math.random() * 100;
         
-        // Random animation duration
-        const duration = 8 + Math.random() * 15; // Faster movement
-        const delay = Math.random() * 15;
+        // Random animation duration (faster)
+        const duration = 5 + Math.random() * 10;
+        const delay = Math.random() * 10;
         
         // Random size variation
-        const size = 2 + Math.random() * 3; // Smaller size (2-5px)
+        const size = 2 + Math.random() * 4; // Slightly larger size range (2-6px)
         
         firefly.style.left = `${startX}px`;
         firefly.style.top = `${startY}px`;
@@ -534,17 +538,46 @@
         firefly.style.animationDelay = `${delay}s`;
         
         // Random glow intensity
-        const intensity = 0.7 + Math.random() * 0.3;
+        const intensity = 0.6 + Math.random() * 0.4;
         firefly.style.opacity = intensity;
+        
+        // Random horizontal movement
+        const xMovement = -30 + Math.random() * 60;
+        firefly.style.setProperty('--x-movement', `${xMovement}px`);
         
         container.appendChild(firefly);
       }
     }
 
+    // Update firefly animation to fly downward
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fly {
+        0% {
+          transform: translateY(-100px) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) translateX(var(--x-movement, 50px)) rotate(5deg);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
     // Initialize the app when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
-      // Create fireflies
+      // Create initial fireflies
       createFireflies();
+      
+      // Create more fireflies periodically
+      setInterval(createFireflies, 5000);
       
       // Continue button functionality
       document.getElementById('continueBtn').addEventListener('click', () => {
